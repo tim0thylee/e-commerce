@@ -1,17 +1,29 @@
 import React, {Component} from "react";
+import unsplash from "../../api/unsplash";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import ImageList from "../../components/ImageList/ImageList";
 import "./container.css";
 
 class Container extends Component {
+
     state = {
-        term: ''
+        images: []
     }
+   
+    onTermChange = async (term) => {
+       const response = await unsplash.get('/search/photos', {
+            params:{query: term}
+        })
+        this.setState({images: response.data.results})
+        console.log(this.state.images)
+    }
+
 
     render () {
         return (
             <div className="container">
                 <div className="navbar">
-                    <span className="fas fa-comment-dollar" style={{color: "white"}}></span>
+                    <span className="fas fa-image" style={{color: "white"}}></span>
                     <div className ="buy-bar">
                         <button >
                             <span className="fas fa-shopping-cart"></span>
@@ -23,12 +35,11 @@ class Container extends Component {
                 </div>
                 <div className="product-grid">
                     <div className="title-line">
-                        BodyBP Store
+                        Poster Store
                     </div>
                     <div className="product-grid-body">
-                        <SearchBar />
-                        <div className="product-grid-cards">
-                        </div>
+                        <SearchBar onSubmit={this.onTermChange}/>
+                        <ImageList images={this.state.images}/>
                     </div>
                 </div>
             </div>
