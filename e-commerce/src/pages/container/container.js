@@ -12,7 +12,7 @@ class Container extends Component {
    
     onTermChange = async (term) => {
        const response = await unsplash.get('/search/photos', {
-            params:{query: term}
+            params: {query: term, per_page: 12}
         })
         this.setState({images: response.data.results})
         console.log(this.state.images)
