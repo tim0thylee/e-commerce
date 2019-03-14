@@ -1,25 +1,15 @@
 import React, {Component} from "react";
-import unsplash from "../../api/unsplash";
+import {connect} from 'react-redux';
+
+import {onTermChange} from "../../actions"
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ImageList from "../../components/ImageList/ImageList";
 import "./container.css";
 
 class Container extends Component {
 
-    state = {
-        images: []
-    }
-   
-    onTermChange = async (term) => {
-       const response = await unsplash.get('/search/photos', {
-            params: {query: term, per_page: 12}
-        })
-        this.setState({images: response.data.results})
-        console.log(this.state.images)
-    }
-
-
     render () {
+        console.log(this.props.images)
         return (
             <div className="container">
                 <div className="navbar">
@@ -38,13 +28,15 @@ class Container extends Component {
                         Poster Store
                     </div>
                     <div className="product-grid-body">
-                        <SearchBar onSubmit={this.onTermChange}/>
-                        <ImageList images={this.state.images}/>
+                        <SearchBar onSubmit={this.props.onTermChange}/>
+                        <ImageList images={this.props.images}/>
                     </div>
                 </div>
             </div>
         )
     }
 }
-
-export default Container;
+const mapStateToProps = (state) => {
+    return {images: state.images}
+}
+export default connect(mapStateToProps, {onTermChange})(Container);
