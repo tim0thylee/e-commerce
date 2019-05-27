@@ -9,7 +9,6 @@ import "./container.css";
 class Container extends Component {
 
     render () {
-        console.log(this.props.images)
         return (
             <div className="container">
                 <div className="navbar">
