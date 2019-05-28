@@ -9,3 +9,17 @@ export const onTermChange = (term) => {
         dispatch({type: 'ON_TERM_CHANGE', payload: response.data.results})
     }
 }
+
+export const addToCart = (item) => {
+    return {
+        type: 'ADD_CART',
+        payload: item
+    }
+}
+
+export const removeFromList = (item) => {
+    return {
+        type: 'REMOVE_LIST',
+        payload: item
+    }
+}
