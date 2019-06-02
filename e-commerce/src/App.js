@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import Container from "./pages/container/container";
+import {BrowserRouter, Route} from 'react-router-dom';
+
+import Buypage from "./pages/Buypage/Buypage";
+import Checkoutpage from './pages/Checkoutpage/Checkoutpage';
 import "./App.css"
 
 
@@ -7,7 +10,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Container />
+        <BrowserRouter>
+          <Route exact path="/" component={Buypage}/>
+          <Route exact path="/checkout" component={Checkoutpage}/>
+        </BrowserRouter>
       </div>
     );
   }
