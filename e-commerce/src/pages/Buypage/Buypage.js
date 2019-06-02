@@ -4,24 +4,14 @@ import {connect} from 'react-redux';
 import {onTermChange} from "../../actions"
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ImageList from "../../components/ImageList/ImageList";
-import "./container.css";
+import Navbar from "../../components/Navbar/Navbar";
+import "./Buypage.css";
 
 class Container extends Component {
-
     render () {
         return (
             <div className="container">
-                <div className="navbar">
-                    <span className="fas fa-image" style={{color: "white"}}></span>
-                    <div className ="buy-bar">
-                        <button >
-                            <span className="fas fa-shopping-cart"></span>
-                        </button>
-                        <button>
-                            <span className="fas fa-cash-register"></span>
-                        </button>
-                    </div>
-                </div>
+                <Navbar/>
                 <div className="product-grid">
                     <div className="title-line">
                         Poster Store
@@ -35,7 +25,9 @@ class Container extends Component {
         )
     }
 }
+
 const mapStateToProps = (state) => {
     return {images: state.images}
 }
+
 export default connect(mapStateToProps, {onTermChange})(Container);

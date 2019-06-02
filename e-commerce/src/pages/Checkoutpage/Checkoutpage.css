@@ -1,0 +1,26 @@
+.cart-grid-body{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-body {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.cart-title {
+    color: #FF6060;
+}
+
+.cart-item{
+    display: flex;
+    margin: 5px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.total-value{
+    align-self: flex-end;
+}

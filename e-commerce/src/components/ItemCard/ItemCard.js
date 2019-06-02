@@ -6,7 +6,7 @@ import {addToCart, removeFromList} from '../../actions';
 
 const ItemCard = props => {
 
-    const {image}= props;
+    const {image} = props;
 
     const imageInsert = {
         backgroundImage:`url("${image.urls.thumb}")`,
@@ -17,6 +17,8 @@ const ItemCard = props => {
     }
 
     const addToCartHelper = (image) => {
+        // We add a price to each image we add to the object.
+        image.value = 10;
         props.addToCart(image);
         props.removeFromList(image.id);
     }
